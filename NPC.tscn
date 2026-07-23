@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bpr1uwpvossqi"]
+
+[ext_resource type="Texture2D" uid="uid://ced6gf3q3wlng" path="res://icon.svg" id="1_twre2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ew5pp"]
+size = Vector2(129, 129)
+
+[node name="NPC" type="CharacterBody2D" unique_id=1194520197]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1222755933]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1293338418]
+position = Vector2(-2.5, -0.5)
+shape = SubResource("RectangleShape2D_ew5pp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1890048624]
+texture = ExtResource("1_twre2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1253723551]
+position = Vector2(-2.5, -0.5)
+shape = SubResource("RectangleShape2D_ew5pp")
+
+[node name="Archetype" type="Node2D" parent="." unique_id=2028989063]
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

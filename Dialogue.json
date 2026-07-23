@@ -1,0 +1,7 @@
+{
+	"Action_lines" : {"fisherman":"I went fishing","hunter": "I went hunting","chef": "I was cooking","scout":"I was scouting"},
+	"Location_lines": {"campfire": "I was near the campfire","living_room": "I was in the living room"},
+	"Infected_mistakes": {"Your":"You're","two":"too"},
+	"Introduction_lines": {"hunter":"Hello, I am a hunter", "chef": "Hello, I am a cook",
+						 "scout":"Hello, I am a scout","fisherman":"Hello, I am a Fisherman"}
+}
