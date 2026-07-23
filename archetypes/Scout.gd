@@ -1,13 +1,10 @@
 class_name Scout
 extends NPC_base
 var times_talked:int = 0
+var Scout_actions:Array[String]=["Explore the area","Search for food","Search for water"]
+var possible_actions:Array[String] = default_actions + Scout_actions
+
 func _init() -> void:
-	dialogue = ["hi,scout","hello,scout"]
 	infected = false
 	archetype = "scout"
 	times_talked = 0
-
-func get_lines(is_infected:bool)->String:
-	var random_dialogue: String = dialogue.pick_random()
-	return random_dialogue
-	
