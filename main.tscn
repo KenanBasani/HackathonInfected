@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://b4eudp5mway7w"]
+
+[ext_resource type="PackedScene" uid="uid://daqcaodhiwdn1" path="res://player.tscn" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://dtvmufmh6f0ac" path="res://icon.svg" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://cm5e8c1frgbmp" path="res://right_tp.gd" id="3_h2yge"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hawkm"]
+size = Vector2(36.75, 890)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h6yol"]
+size = Vector2(2206, 52)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwyk5"]
+size = Vector2(2174, 50.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bt5uy"]
+size = Vector2(9, 958)
+
+[node name="Main" type="Node2D" unique_id=1222958635]
+
+[node name="Player" parent="." unique_id=258083068 instance=ExtResource("1_ig7tw")]
+position = Vector2(400, 300)
+
+[node name="Wall" type="StaticBody2D" parent="." unique_id=589722582]
+
+[node name="Left wall" type="CollisionShape2D" parent="Wall" unique_id=795654380]
+position = Vector2(-15, 312)
+shape = SubResource("RectangleShape2D_hawkm")
+debug_color = Color(0.048890933, 0.58427876, 0.77760345, 0.41960785)
+
+[node name="decoyleft" type="Sprite2D" parent="Wall/Left wall" unique_id=831778116]
+position = Vector2(-1.5, -1)
+scale = Vector2(0.30468747, 6.984375)
+texture = ExtResource("2_0xm2m")
+
+[node name="bottom wall" type="CollisionShape2D" parent="Wall" unique_id=364167348]
+position = Vector2(1019, 743)
+shape = SubResource("RectangleShape2D_h6yol")
+
+[node name="decoybot" type="Sprite2D" parent="Wall/bottom wall" unique_id=537420118]
+position = Vector2(2, 2)
+scale = Vector2(17.64844, 0.5390625)
+texture = ExtResource("2_0xm2m")
+
+[node name="top wall" type="CollisionShape2D" parent="Wall" unique_id=2035298906]
+position = Vector2(1038, -30.25)
+shape = SubResource("RectangleShape2D_cwyk5")
+
+[node name="decoytop" type="Sprite2D" parent="Wall/top wall" unique_id=1323721738]
+position = Vector2(2.749878, -8.75)
+scale = Vector2(17.097654, 0.53125)
+texture = ExtResource("2_0xm2m")
+
+[node name="RightTp" type="Area2D" parent="." unique_id=1593537641]
+script = ExtResource("3_h2yge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightTp" unique_id=1055141245]
+position = Vector2(2095.5, 377)
+shape = SubResource("RectangleShape2D_bt5uy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=747668485]
+position = Vector2(2106.9658, 381)
+scale = Vector2(-0.22320469, 8.023438)
+texture = ExtResource("2_0xm2m")
+
+[connection signal="body_entered" from="RightTp" to="RightTp" method="_on_body_entered"]
