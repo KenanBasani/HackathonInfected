@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://b4eudp5mway7w"]
 
 [ext_resource type="PackedScene" uid="uid://daqcaodhiwdn1" path="res://player.tscn" id="1_ig7tw"]
-[ext_resource type="Texture2D" uid="uid://dtvmufmh6f0ac" path="res://icon.svg" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bkw4j6lmpk3s" path="res://NPC_Manager.tscn" id="1_kek77"]
+[ext_resource type="Texture2D" uid="uid://ced6gf3q3wlng" path="res://icon.svg" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://cm5e8c1frgbmp" path="res://right_tp.gd" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://yv47j2mxwrdo" path="res://bregdet.png" id="4_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://cvyiggspg8cun" path="res://bregdetpart2.png" id="6_7mycd"]
@@ -22,6 +23,9 @@ size = Vector2(2174, 50.5)
 size = Vector2(9, 958)
 
 [node name="Main" type="Node2D" unique_id=1222958635]
+position = Vector2(1, 0)
+
+[node name="NPC_Manager" parent="." unique_id=1957851941 instance=ExtResource("1_kek77")]
 
 [node name="Player" parent="." unique_id=258083068 instance=ExtResource("1_ig7tw")]
 position = Vector2(400, 300)
