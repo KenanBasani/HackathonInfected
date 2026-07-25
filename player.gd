@@ -1,6 +1,8 @@
 extends CharacterBody2D
+class_name Player
 @export var speed: float = 385.0 # movement speed
 var interactables = [];
+static var bullets_left:int = 0
 
 #TO read the json file
 var file = FileAccess.open("res://Dialogue.json", FileAccess.READ)
@@ -37,9 +39,24 @@ func removeInteractability(interactable: Area2D):
 
 func tryToKill():
 	var currentInteraction = getInteractionWinner()
-	if (currentInteraction):
+	if (currentInteraction) and bullets_left:
+		bullets_left -=1
 		currentInteraction.killNPC()
-		print("Kill")
+		#Announce the kill
+		var npc_killed_name = ""
+		var npc = currentInteraction.get_parent()
+		for child in npc.get_children():
+			if child is NPC_base:
+				npc_killed_name = child.archetype
+				child.infected = false
+		DialogueBox.make_dialogue_box("Announcer","You have killed the %s." % [npc_killed_name])
+		var game_ended = check_if_game_ended()
+		await get_tree().create_timer(2.0).timeout
+		print(game_ended)
+		if game_ended == 2:
+			DialogueBox.make_dialogue_box("Announcer","Congratulations, you won! All the infected have been killed")
+		if game_ended == 1:
+			DialogueBox.make_dialogue_box("Announcer","You lost! The infected will swarm the island!")
 	return 
 
 func getInteractionWinner():
@@ -92,4 +109,18 @@ func get_character_line(child:NPC_base,times_talked:int)->String:
 		line = line + "I am infected"
 	return line
 
-		
+func check_if_game_ended()->int:
+	var number_of_infected_left:int = 0
+	for npc in Manage_NPCs.npc_list:
+		if npc != null:
+			for child in npc.get_children():
+				if child is NPC_base:
+					if child.infected:
+						number_of_infected_left = number_of_infected_left + 1
+						print(child.archetype)
+	if number_of_infected_left==0:
+		return 2
+	if (bullets_left == 0 and number_of_infected_left>0) or number_of_infected_left>bullets_left:
+		return 1
+	else:
+		return 0
