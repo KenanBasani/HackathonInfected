@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://b4eudp5mway7w"]
 
+[ext_resource type="Script" path="res://DayNight_cycle.gd" id="1_4c57u"]
 [ext_resource type="PackedScene" uid="uid://daqcaodhiwdn1" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bkw4j6lmpk3s" path="res://NPC_Manager.tscn" id="1_kek77"]
-[ext_resource type="Script" uid="uid://cag3frqbdj3ll" path="res://main.gd" id="1_w48qg"]
 [ext_resource type="Texture2D" uid="uid://ced6gf3q3wlng" path="res://icon.svg" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://cm5e8c1frgbmp" path="res://right_tp.gd" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://yv47j2mxwrdo" path="res://bregdet.png" id="4_1bvp3"]
@@ -34,8 +34,8 @@ size = Vector2(55.755024, 82.03064)
 size = Vector2(61.67061, 53.74477)
 
 [node name="Main" type="Node2D" unique_id=1222958635]
-position = Vector2(202, -4)
-script = ExtResource("1_w48qg")
+position = Vector2(1, 0)
+script = ExtResource("1_4c57u")
 
 [node name="NPC_Manager" parent="." unique_id=1957851941 instance=ExtResource("1_kek77")]
 
@@ -118,6 +118,11 @@ position = Vector2(-265.74997, 613.5)
 scale = Vector2(5.685, 6.6699996)
 texture = ExtResource("9_4c57u")
 
+[node name="Timer" type="Timer" parent="." unique_id=1081659262]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
 [node name="Treeblock" type="Sprite2D" parent="." unique_id=577562283]
 z_index = -9
 position = Vector2(1691.0001, 361)
@@ -192,3 +197,4 @@ flip_h = true
 position = Vector2(1970, 409)
 
 [connection signal="body_entered" from="Tp(Scene1->Scene2))" to="Tp(Scene1->Scene2))" method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
