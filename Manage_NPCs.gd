@@ -59,7 +59,7 @@ static func infect_npc()->void:
 		var npc_list_clone = npc_list.duplicate()
 		npc_list_clone.shuffle()
 		for npc in npc_list_clone:
-			if one_npc_infected:
+			if one_npc_infected or npc == null:
 				break
 			for child in npc.get_children():
 				if child is NPC_base:
