@@ -47,7 +47,7 @@ func spawn_n_npcs(count: int) -> void:
 
 		
 
-func on_day_start()->void:
+static func on_day_start()->void:
 	for npc in npc_list:
 		for child in npc.get_children():
 			if child is NPC_base:

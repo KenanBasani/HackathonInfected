@@ -101,7 +101,7 @@ func get_character_line(child:NPC_base,times_talked:int)->String:
 		line = action_line if randf()>0.5 else location_line
 
 	if times_talked>2:
-		var linearray = (child.daily_actions)
+		var linearray = (child.completed_tasks)
 		line = ""
 		for i in linearray:
 			line = line + i + "|"
