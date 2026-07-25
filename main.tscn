@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://daqcaodhiwdn1" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bkw4j6lmpk3s" path="res://NPC_Manager.tscn" id="1_kek77"]
+[ext_resource type="Script" uid="uid://cag3frqbdj3ll" path="res://main.gd" id="1_w48qg"]
 [ext_resource type="Texture2D" uid="uid://ced6gf3q3wlng" path="res://icon.svg" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://cm5e8c1frgbmp" path="res://right_tp.gd" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://yv47j2mxwrdo" path="res://bregdet.png" id="4_1bvp3"]
@@ -9,6 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://b2pjddl443gkq" path="res://rockwall.png" id="7_272bh"]
 [ext_resource type="Texture2D" uid="uid://cxxfdlo0gdty5" path="res://minirock.png" id="8_kek77"]
 [ext_resource type="Texture2D" uid="uid://clh2te43k1l55" path="res://rockwall2.png" id="9_4c57u"]
+[ext_resource type="Texture2D" uid="uid://bbkr86aq2ooc1" path="res://treeblock.png" id="11_dg77c"]
+[ext_resource type="Texture2D" uid="uid://dacu7c46na0pb" path="res://pathfinal.png" id="13_ycdy4"]
+[ext_resource type="Texture2D" uid="uid://dn3jq6pvvj6gq" path="res://scene2help.png" id="14_w48qg"]
+[ext_resource type="Texture2D" uid="uid://cu8et2tygq85e" path="res://fuckyouthatswhydiffe.png" id="16_2cqfq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hawkm"]
 size = Vector2(36.75, 890)
@@ -20,10 +25,17 @@ size = Vector2(2206, 52)
 size = Vector2(2174, 50.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bt5uy"]
-size = Vector2(9, 958)
+size = Vector2(31, 958)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6fpjc"]
+size = Vector2(55.755024, 82.03064)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cslp7"]
+size = Vector2(61.67061, 53.74477)
 
 [node name="Main" type="Node2D" unique_id=1222958635]
-position = Vector2(1, 0)
+position = Vector2(202, -4)
+script = ExtResource("1_w48qg")
 
 [node name="NPC_Manager" parent="." unique_id=1957851941 instance=ExtResource("1_kek77")]
 
@@ -63,21 +75,22 @@ position = Vector2(2.749878, -8.75)
 scale = Vector2(17.097654, 0.53125)
 texture = ExtResource("2_0xm2m")
 
-[node name="RightTp" type="Area2D" parent="." unique_id=1593537641]
+[node name="Tp(Scene1->Scene2))" type="Area2D" parent="." unique_id=1593537641]
 script = ExtResource("3_h2yge")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightTp" unique_id=1055141245]
-position = Vector2(2095.5, 377)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tp(Scene1->Scene2))" unique_id=1055141245]
+position = Vector2(2106.5, 377)
 shape = SubResource("RectangleShape2D_bt5uy")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=747668485]
+visible = false
 position = Vector2(2106.9658, 381)
 scale = Vector2(-0.22320469, 8.023438)
 texture = ExtResource("2_0xm2m")
 
 [node name="Bregdet" type="Sprite2D" parent="." unique_id=597554185]
 z_index = -10
-position = Vector2(1038.5001, 690.5)
+position = Vector2(1039.0001, 665)
 scale = Vector2(7.11, 5.6500006)
 texture = ExtResource("4_1bvp3")
 
@@ -105,4 +118,77 @@ position = Vector2(-265.74997, 613.5)
 scale = Vector2(5.685, 6.6699996)
 texture = ExtResource("9_4c57u")
 
-[connection signal="body_entered" from="RightTp" to="RightTp" method="_on_body_entered"]
+[node name="Treeblock" type="Sprite2D" parent="." unique_id=577562283]
+z_index = -9
+position = Vector2(1691.0001, 361)
+scale = Vector2(4.7349997, 6.205)
+texture = ExtResource("11_dg77c")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Treeblock" unique_id=943783831]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Treeblock/StaticBody2D" unique_id=1770963638]
+position = Vector2(52.16471, -49.798557)
+scale = Vector2(1, 0.9999998)
+shape = SubResource("RectangleShape2D_6fpjc")
+
+[node name="Treeblock2" type="Sprite2D" parent="." unique_id=466306977]
+z_index = 1
+position = Vector2(1743, 857)
+scale = Vector2(4.235, 4.7799997)
+texture = ExtResource("11_dg77c")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Treeblock2" unique_id=1170849554]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Treeblock2/StaticBody2D" unique_id=459415660]
+position = Vector2(49.01718, -35.261505)
+shape = SubResource("RectangleShape2D_cslp7")
+
+[node name="Treeblock4" type="Sprite2D" parent="." unique_id=2092092998]
+position = Vector2(2311, 1017)
+scale = Vector2(4.8325, 4.3075)
+texture = ExtResource("11_dg77c")
+
+[node name="Treeblock5" type="Sprite2D" parent="." unique_id=1266280666]
+position = Vector2(1959.9999, 1015)
+scale = Vector2(6.18, 4.4250007)
+texture = ExtResource("11_dg77c")
+
+[node name="Treeblock6" type="Sprite2D" parent="." unique_id=565332450]
+position = Vector2(2197, 274.00006)
+scale = Vector2(5.4850006, 6.000001)
+texture = ExtResource("11_dg77c")
+
+[node name="Treeblock7" type="Sprite2D" parent="." unique_id=757087162]
+position = Vector2(2040.9998, 189.99997)
+scale = Vector2(4.39, 4.6600003)
+texture = ExtResource("11_dg77c")
+
+[node name="Treeblock8" type="Sprite2D" parent="." unique_id=1323955289]
+z_index = -400
+position = Vector2(2004.0002, -45.000008)
+scale = Vector2(2.4025006, 2.01)
+texture = ExtResource("11_dg77c")
+
+[node name="Pathfinal" type="Sprite2D" parent="." unique_id=863364399]
+visible = false
+z_index = -10
+position = Vector2(2308.0002, 399)
+scale = Vector2(1.9800003, 2.0300002)
+texture = ExtResource("13_ycdy4")
+
+[node name="Scene2Help" type="Sprite2D" parent="." unique_id=1742932511]
+visible = false
+position = Vector2(-4220.999, -1199.9998)
+scale = Vector2(3.6300004, 3.1733341)
+texture = ExtResource("14_w48qg")
+
+[node name="Fuckyouthatswhydiffe" type="Sprite2D" parent="." unique_id=1845176416]
+position = Vector2(2482, 467)
+scale = Vector2(2.688333, 1.9866666)
+texture = ExtResource("16_2cqfq")
+flip_h = true
+
+[node name="FromScene2" type="Marker2D" parent="." unique_id=813515875]
+position = Vector2(1970, 409)
+
+[connection signal="body_entered" from="Tp(Scene1->Scene2))" to="Tp(Scene1->Scene2))" method="_on_body_entered"]
