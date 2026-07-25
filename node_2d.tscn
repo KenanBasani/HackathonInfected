@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://30nrveh2xqbi"]
+
+[ext_resource type="Texture2D" uid="uid://c8viiqq00vma5" path="res://toscene3.png" id="1_wtcfe"]
+
+[node name="Node2D" type="Node2D" unique_id=1446133890]
+
+[node name="Toscene3" type="Sprite2D" parent="." unique_id=408913360]
+position = Vector2(507, 411)
+texture = ExtResource("1_wtcfe")
