@@ -70,17 +70,17 @@ static func infect_npc()->void:
 	if DayClock.current_time == "day":
 		var npc_list_clone = npc_list.duplicate()
 		npc_list_clone.shuffle()
-		for npc in npc_list_clone:
+		for npc in npc_list:
 			if one_npc_infected or npc == null:
-				break
+				continue
 			for child in npc.get_children():
-				if child is NPC_base:
-					for second_npc in npc_list:
+				if child is NPC_base and child.infected:
+					for second_npc in npc_list_clone:
 						if second_npc != null:
 							for childs in second_npc.get_children():
 								if childs is NPC_base:
+									var already_in_list:bool = false
 									for location in childs.recorded_places:
-										var already_in_list:bool = false
 										if location in child.recorded_places and not already_in_list:
 											possible_to_infect_npcs.append([second_npc,location])
 											already_in_list = true
