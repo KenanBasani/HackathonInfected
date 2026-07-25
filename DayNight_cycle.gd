@@ -1,12 +1,12 @@
 extends Node
 class_name DayClock
-var day_time = 15.0
-var night_time = 10.0
+@export var day_time = 60.0
+@export var night_time = 30.0
 static var current_time = "day"
 @onready var timer: Timer = $Timer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	Player.bullets_left = round((len(Manage_NPCs.npc_list)/4)*3)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
