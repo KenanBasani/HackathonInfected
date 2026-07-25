@@ -1,7 +1,21 @@
-{
-	"Action_lines" : {"fisherman":"I went fishing","hunter": "I went hunting","chef": "I was cooking","scout":"I was scouting"},
-	"Location_lines": {"campfire": "I was near the campfire","living_room": "I was in the living room"},
-	"Infected_mistakes": {"Your":"You're","two":"too"},
-	"Introduction_lines": {"hunter":"Hello, I am a hunter", "chef": "Hello, I am a cook",
-						 "scout":"Hello, I am a scout","fisherman":"Hello, I am a Fisherman"}
+{	"Location_lines": {"campfire": ["I was near the campfire", "I was chilling at the campfire", "Been roasting some marshmallows"],
+						"beach": ["I was enjoying the view of the sea", "Was bathing with the fishes", "I watched the calm water for hours"],
+						"forest" : ["Explored the woods a little", "I was climbing some trees", "I tried to find a cat"],
+						"sleep": ["Dreamt a few beautiful dreams last night", "Had a bad nightmare, you wouldnt believe it","I slept peacefully."]
+					},
+	
+	"Reporting_lines":{"with":"I was with player1 action",
+						"saw":"I saw player1 near the place, action",
+						},
+	
+	"Infected_mistakes": {"Your":"You're","two":"too",
+						"hunter":"Morniin', I am a hunter, name",
+						"chef": "Good morning, I am a chef, name",
+						"scout":"Good mornin' I am a scout, name",
+						"fisherman":"Freshy mornin', I am a fisherman, name"},
+
+	"Introduction_lines": {"hunter":"Mornin', I am a hunter, name", 
+						"chef": "Good morning, I am a chef, name",
+						"scout":"Good mornin', I am a scout, name",
+						"fisherman":"Fresh mornin', I am a fisherman, name"}
 }

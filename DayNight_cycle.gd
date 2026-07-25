@@ -1,8 +1,8 @@
 extends Node
 class_name DayClock
-@export var day_time = 20.0
-@export var night_time = 10.0
-static var current_time = ""
+@export var day_time = 10.0
+@export var night_time = 5.0
+static var current_time = "day"
 @onready var timer: Timer = $Timer
 var task_timer_timeouts = 0
 var task_timer = Timer.new()
@@ -41,7 +41,6 @@ func _on_timer_timeout() -> void:
 	if current_time == "day":
 		Manage_NPCs.infect_npc()
 	timer.start()
-	print(timer.wait_time)
 	
 func _on_task_timer_timeout()->void:
 	if task_timer_timeouts>2:

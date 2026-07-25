@@ -6,6 +6,7 @@ var archetype: NPC_base
 var npc_scene: PackedScene = preload("res://NPC.tscn")
 static var npc_list: Array[Node] = []
 var classes: Array = [Hunter,Cook,Fisherman,Scout]
+static var location_of_last_infection
 
 
 
@@ -64,6 +65,8 @@ static func on_day_start()->void:
 
 static func infect_npc()->void:
 	var one_npc_infected = false
+	var possible_to_infect_npcs = []
+	
 	if DayClock.current_time == "day":
 		var npc_list_clone = npc_list.duplicate()
 		npc_list_clone.shuffle()
@@ -72,13 +75,23 @@ static func infect_npc()->void:
 				break
 			for child in npc.get_children():
 				if child is NPC_base:
-					if child.infected:
-						continue
-					else:
-						child.infected=true
-						one_npc_infected = true
-						
-						
+					for second_npc in npc_list:
+						if second_npc != null:
+							for childs in second_npc.get_children():
+								if childs is NPC_base:
+									for location in childs.recorded_places:
+										var already_in_list:bool = false
+										if location in child.recorded_places and not already_in_list:
+											possible_to_infect_npcs.append([second_npc,location])
+											already_in_list = true
+		for npc in possible_to_infect_npcs:
+			for child in npc[0].get_children():
+				if child is NPC_base:
+					if not child.infected:
+						child.infected = true
+						location_of_last_infection = npc[1]
+						return
+					
 func rebind_action(action_name: StringName, new_key: String) -> void:
 	InputMap.action_erase_events(action_name)
 	var new_event := InputEventKey.new()
