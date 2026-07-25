@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://c4m0i75b2tsna"]
+
+[ext_resource type="Script" uid="uid://biawnk6v6ao2f" path="res://Controls.gd" id="1_qo8cm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ff64o"]
+size = Vector2(200, 99)
+
+[node name="Controls" type="Node2D" unique_id=541616774]
+script = ExtResource("1_qo8cm")
+
+[node name="Down" type="Polygon2D" parent="." unique_id=1259235358]
+position = Vector2(544, 3)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(100, 100, 300, 100, 300, 200, 100, 200)
+
+[node name="Label" type="Label" parent="Down" unique_id=709227867]
+offset_left = 92.0
+offset_top = 101.0
+offset_right = 301.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 33
+text = "Down : S"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="Down" unique_id=1362939522]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Down/Area2D" unique_id=1699882132]
+position = Vector2(200, 149.5)
+shape = SubResource("RectangleShape2D_ff64o")
+
+[node name="Up" type="Polygon2D" parent="." unique_id=907070763]
+position = Vector2(271, 4)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(100, 100, 300, 100, 300, 200, 100, 200)
+
+[node name="Label" type="Label" parent="Up" unique_id=687869224]
+offset_left = 92.0
+offset_top = 101.0
+offset_right = 301.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 33
+text = "Up : W"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="Up" unique_id=2102274545]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Up/Area2D" unique_id=2095276542]
+position = Vector2(200, 149.5)
+shape = SubResource("RectangleShape2D_ff64o")
+
+[node name="Right" type="Polygon2D" parent="." unique_id=1155169217]
+position = Vector2(545, 136)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(100, 100, 300, 100, 300, 200, 100, 200)
+
+[node name="Label" type="Label" parent="Right" unique_id=328315005]
+offset_left = 92.0
+offset_top = 101.0
+offset_right = 301.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 33
+text = "Right : D"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="Right" unique_id=330903239]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right/Area2D" unique_id=1744385040]
+position = Vector2(200, 149.5)
+shape = SubResource("RectangleShape2D_ff64o")
+
+[node name="Kill" type="Polygon2D" parent="." unique_id=1312755471]
+position = Vector2(544, 258)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(100, 100, 300, 100, 300, 200, 100, 200)
+
+[node name="Label" type="Label" parent="Kill" unique_id=848392749]
+offset_left = 92.0
+offset_top = 101.0
+offset_right = 301.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 33
+text = "Kill : R"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="Kill" unique_id=297742657]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kill/Area2D" unique_id=530153944]
+position = Vector2(200, 149.5)
+shape = SubResource("RectangleShape2D_ff64o")
+
+[node name="Talk" type="Polygon2D" parent="." unique_id=1579723954]
+position = Vector2(266, 260)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(100, 100, 300, 100, 300, 200, 100, 200)
+
+[node name="Label" type="Label" parent="Talk" unique_id=2039435974]
+offset_left = 92.0
+offset_top = 101.0
+offset_right = 301.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 33
+text = "Talk: E"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="Talk" unique_id=1300828797]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Talk/Area2D" unique_id=1079186637]
+position = Vector2(200, 149.5)
+shape = SubResource("RectangleShape2D_ff64o")
+
+[node name="Left" type="Polygon2D" parent="." unique_id=1137551123]
+position = Vector2(269, 132)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(100, 100, 300, 100, 300, 200, 100, 200)
+
+[node name="Label" type="Label" parent="Left" unique_id=33351776]
+offset_left = 92.0
+offset_top = 101.0
+offset_right = 301.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 33
+text = "Left : A"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="Left" unique_id=178088366]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left/Area2D" unique_id=1410725853]
+position = Vector2(200, 149.5)
+shape = SubResource("RectangleShape2D_ff64o")
+
+[node name="Back" type="Polygon2D" parent="." unique_id=1661570808]
+position = Vector2(417, 385)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(100, 100, 300, 100, 300, 200, 100, 200)
+
+[node name="Label" type="Label" parent="Back" unique_id=1422033799]
+offset_left = 92.0
+offset_top = 101.0
+offset_right = 301.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 33
+text = "Go Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="Back" unique_id=44809171]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Back/Area2D" unique_id=1153733246]
+position = Vector2(200, 149.5)
+shape = SubResource("RectangleShape2D_ff64o")
+
+[connection signal="mouse_entered" from="Down/Area2D" to="." method="_down"]
+[connection signal="mouse_exited" from="Down/Area2D" to="." method="_downex"]
+[connection signal="mouse_entered" from="Up/Area2D" to="." method="up"]
+[connection signal="mouse_exited" from="Up/Area2D" to="." method="upex"]
+[connection signal="mouse_entered" from="Right/Area2D" to="." method="right"]
+[connection signal="mouse_exited" from="Right/Area2D" to="." method="rightex"]
+[connection signal="mouse_entered" from="Kill/Area2D" to="." method="kill"]
+[connection signal="mouse_exited" from="Kill/Area2D" to="." method="killex"]
+[connection signal="mouse_entered" from="Talk/Area2D" to="." method="talk"]
+[connection signal="mouse_exited" from="Talk/Area2D" to="." method="talkex"]
+[connection signal="mouse_entered" from="Left/Area2D" to="." method="left"]
+[connection signal="mouse_exited" from="Left/Area2D" to="." method="leftex"]
+[connection signal="mouse_entered" from="Back/Area2D" to="." method="back"]
+[connection signal="mouse_exited" from="Back/Area2D" to="." method="backex"]

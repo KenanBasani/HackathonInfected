@@ -12,7 +12,16 @@ var classes: Array = [Hunter,Cook,Fisherman,Scout]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("Its working!")
-	spawn_n_npcs(5)
+	spawn_n_npcs(Global_settings.npc_count)
+	rebind_action("move_left",Global_settings.move_left)
+	rebind_action("move_right",Global_settings.move_right)
+	rebind_action("move_up",Global_settings.move_up)
+	rebind_action("move_down",Global_settings.move_down)
+	rebind_action("kill",Global_settings.kill_npc)
+	rebind_action("interact",Global_settings.talk_to_npc)
+	
+	
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -68,3 +77,11 @@ static func infect_npc()->void:
 					else:
 						child.infected=true
 						one_npc_infected = true
+						
+						
+func rebind_action(action_name: StringName, new_key: String) -> void:
+	InputMap.action_erase_events(action_name)
+	var new_event := InputEventKey.new()
+	new_event.physical_keycode = (OS.find_keycode_from_string(new_key))
+	
+	InputMap.action_add_event(action_name, new_event)

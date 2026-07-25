@@ -9,11 +9,10 @@ var task_timer = Timer.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Player.bullets_left = round((len(Manage_NPCs.npc_list)/4)*3)
 	timer.wait_time = day_time
 	initialize_task_timer()
 	timer.start()
-
+	Player.bullets_left = roundi((Manage_NPCs.npc_list.size() / 4.0) * 3)
 func initialize_task_timer()->void:
 	task_timer.one_shot = true
 	task_timer.timeout.connect(_on_task_timer_timeout)
@@ -24,8 +23,6 @@ func initialize_task_timer()->void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-
 func _on_timer_timeout() -> void:
 	var day_or_night = "The day has begun"
 	
