@@ -8,6 +8,7 @@ static var npc_list: Array[Node] = []
 var classes: Array = [Hunter,Cook,Fisherman,Scout]
 static var location_of_last_infection
 
+@export var npc_sprites: Array[Texture2D] = []
 
 
 # Called when the node enters the scene tree for the first time.
@@ -35,29 +36,51 @@ func killNPC(npc: Node):
 	pass
 
 func spawn_n_npcs(count: int) -> void:
-	var infected_exists = false
+	var infected_exists := false
+
+	# Make a copy so the Inspector array is not rearranged.
+	var shuffled_sprites: Array[Texture2D] = npc_sprites.duplicate()
+	shuffled_sprites.shuffle()
+
 	for i in range(count):
-		var new_npc = npc_scene.instantiate()
-		new_npc.suicide.connect(Callable(self, "killNPC"))
-		new_npc.position = Vector2(i * 250 +200, 100) 
-		#Creates a new instance of NPC.tscn n times and spaces them out evenly so theyre not one above another
-		
+		var new_npc := npc_scene.instantiate()
+
+		new_npc.position = Vector2(i * 250 + 200, 100)
+
+		# Assign a random archetype/class.
 		var random_class = classes.pick_random()
-		var archetype: NPC_base = random_class.new()
-		new_npc.add_child(archetype)
-		#Adds an archetype for each npc as a child node
-		
+		var npc_archetype: NPC_base = random_class.new()
+		new_npc.add_child(npc_archetype)
+
+		# Decide which NPC is infected.
 		for child in new_npc.get_children():
 			if child is NPC_base:
-				if randf()>0.8 and not infected_exists:
+				if randf() > 0.8 and not infected_exists:
 					child.infected = true
-					infected_exists=true
-				if i == count-1 and not infected_exists:
-					child.infected = true
+					infected_exists = true
 
+				if i == count - 1 and not infected_exists:
+					child.infected = true
+					infected_exists = true
+
+		# Add the NPC to the scene first.
 		add_child(new_npc)
+
+		# Find its Sprite2D.
+		var npc_sprite := new_npc.get_node_or_null("Sprite2D") as Sprite2D
+
+		if npc_sprite == null:
+			push_warning("Sprite2D was not found inside NPC.tscn")
+		elif shuffled_sprites.is_empty():
+			push_warning("The Npc Sprites array is empty")
+		else:
+			# Each of the first five NPCs gets a different sprite.
+			npc_sprite.texture = shuffled_sprites[
+				i % shuffled_sprites.size()
+			]
+
 		npc_list.append(new_npc)
-		#adds the npc to the scene
+
 	on_day_start()
 
 
