@@ -8,7 +8,7 @@
 radius = 151.8552
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ew5pp"]
-size = Vector2(129, 129)
+size = Vector2(60, 60)
 
 [node name="NPC" type="CharacterBody2D" unique_id=1194520197]
 script = ExtResource("1_u1jv5")
@@ -29,10 +29,11 @@ position = Vector2(-2.5, -0.5)
 shape = SubResource("RectangleShape2D_ew5pp")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1890048624]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_twre2")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=1253723551]
-position = Vector2(-2.5, -0.5)
+position = Vector2(-1, -1)
 shape = SubResource("RectangleShape2D_ew5pp")
 
 [node name="Archetype" type="Node2D" parent="." unique_id=2028989063]

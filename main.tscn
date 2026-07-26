@@ -4,8 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://daqcaodhiwdn1" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bkw4j6lmpk3s" path="res://NPC_Manager.tscn" id="1_kek77"]
 [ext_resource type="PackedScene" uid="uid://clccxgglfy55d" path="res://scene_2.tscn" id="2_lquwl"]
+[ext_resource type="Texture2D" uid="uid://cyltwoetay37q" path="res://Hunter.png" id="3_dg77c"]
 [ext_resource type="PackedScene" uid="uid://d4aebn0u61s6l" path="res://Scene1.tscn" id="4_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://d0qt4822lesef" path="res://Liltimmy.png" id="4_ycdy4"]
+[ext_resource type="Texture2D" uid="uid://c44o41el6fmdk" path="res://Scout.png" id="5_w48qg"]
 [ext_resource type="PackedScene" uid="uid://pddbmy5df8na" path="res://Scene3.tscn" id="6_272bh"]
+[ext_resource type="Texture2D" uid="uid://t3vsbsxcsoau" path="res://fisherman.png" id="6_vivmo"]
+[ext_resource type="Texture2D" uid="uid://ghrbllv2jglb" path="res://cook-pixilart.png" id="7_2cqfq"]
 [ext_resource type="Texture2D" uid="uid://bbkr86aq2ooc1" path="res://treeblock.png" id="11_dg77c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kek77"]
@@ -27,10 +32,10 @@ size = Vector2(1119.25, 107.5)
 script = ExtResource("1_4c57u")
 
 [node name="NPC_Manager" parent="." unique_id=1957851941 instance=ExtResource("1_kek77")]
+npc_sprites = Array[Texture2D]([ExtResource("3_dg77c"), ExtResource("4_ycdy4"), ExtResource("5_w48qg"), ExtResource("6_vivmo"), ExtResource("7_2cqfq")])
 
 [node name="Player" parent="." unique_id=258083068 instance=ExtResource("1_ig7tw")]
-position = Vector2(2963, -1262)
-rotation = 1.5707964
+position = Vector2(476, 341)
 
 [node name="Timer" type="Timer" parent="." unique_id=1081659262]
 wait_time = 10.0
@@ -44,7 +49,7 @@ position = Vector2(-125, -9)
 position = Vector2(2768, 98)
 
 [node name="Scene_3" parent="." unique_id=978619944 instance=ExtResource("6_272bh")]
-position = Vector2(1587, -2960)
+position = Vector2(1574, -2959)
 
 [node name="Treeblock3" type="Sprite2D" parent="." unique_id=985955598]
 position = Vector2(2011.0001, -212)
