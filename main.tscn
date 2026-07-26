@@ -24,7 +24,6 @@ size = Vector2(385, 116)
 size = Vector2(1119.25, 107.5)
 
 [node name="Main" type="Node2D" unique_id=1222958635]
-position = Vector2(1, 0)
 script = ExtResource("1_4c57u")
 
 [node name="NPC_Manager" parent="." unique_id=1957851941 instance=ExtResource("1_kek77")]
@@ -113,4 +112,5 @@ shape = SubResource("RectangleShape2D_272bh")
 position = Vector2(2520.75, 284.5)
 shape = SubResource("RectangleShape2D_272bh")
 
+[connection signal="killNPC" from="Player" to="NPC_Manager" method="_on_player_kill_npc"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

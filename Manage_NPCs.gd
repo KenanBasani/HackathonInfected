@@ -30,10 +30,15 @@ func _process(delta: float) -> void:
 	pass
 
 
+func killNPC(npc: Node): 
+	npc_list.remove_at(npc_list.find(npc))
+	pass
+
 func spawn_n_npcs(count: int) -> void:
 	var infected_exists = false
 	for i in range(count):
 		var new_npc = npc_scene.instantiate()
+		new_npc.suicide.connect(Callable(self, "killNPC"))
 		new_npc.position = Vector2(i * 250 +200, 100) 
 		#Creates a new instance of NPC.tscn n times and spaces them out evenly so theyre not one above another
 		
@@ -98,3 +103,8 @@ func rebind_action(action_name: StringName, new_key: String) -> void:
 	new_event.physical_keycode = (OS.find_keycode_from_string(new_key))
 	
 	InputMap.action_add_event(action_name, new_event)
+
+
+func _on_player_kill_npc() -> void:
+	
+	pass # Replace with function body.
