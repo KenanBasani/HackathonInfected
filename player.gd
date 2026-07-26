@@ -3,7 +3,7 @@ class_name Player
 @export var speed: float = 385.0 # movement speed
 var interactables = [];
 static var bullets_left:int = 0
-
+signal killNPC
 #TO read the json file
 var file = FileAccess.open("res://Dialogue.json", FileAccess.READ)
 
@@ -43,6 +43,8 @@ func tryToKill():
 		bullets_left -=1
 		print("Bullets")
 		currentInteraction.killNPC()
+		killNPC.emit();
+
 		#Announce the kill
 		var npc_killed_name = ""
 		var npc = currentInteraction.get_parent()

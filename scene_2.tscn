@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://clccxgglfy55d"]
 
-[ext_resource type="Script" uid="uid://dh0lin4o1m2os" path="res://scene_2.gd" id="1_ryt5m"]
 [ext_resource type="Texture2D" uid="uid://bbkr86aq2ooc1" path="res://treeblock.png" id="4_f618r"]
 [ext_resource type="Texture2D" uid="uid://dla2jo03nqlgg" path="res://scene2f.png" id="5_4ia8e"]
 [ext_resource type="Texture2D" uid="uid://cpbk3prufh0j0" path="res://fuckyouthatswhy.png" id="7_ryt5m"]
@@ -18,7 +17,6 @@ b = Vector2(-188, -132)
 radius = 80.65358
 
 [node name="Scene2" type="Node2D" unique_id=553733876]
-script = ExtResource("1_ryt5m")
 
 [node name="Wall" type="StaticBody2D" parent="." unique_id=1605794316]
 
