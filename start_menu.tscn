@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://behcqtci8uf6e"]
+
+[ext_resource type="Script" uid="uid://dd8hyga51uivb" path="res://StartMenu.gd" id="1_jwbto"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1vsf"]
+size = Vector2(200, 99)
+
+[node name="StartMenu" type="Node2D" unique_id=2027960790]
+script = ExtResource("1_jwbto")
+
+[node name="Start Game" type="Polygon2D" parent="." unique_id=1335939482]
+position = Vector2(-96, 196)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(100, 100, 300, 100, 300, 200, 100, 200)
+
+[node name="Label" type="Label" parent="Start Game" unique_id=56926473]
+offset_left = 92.0
+offset_top = 101.0
+offset_right = 301.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 33
+text = "Start Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="Start Game" unique_id=234776520]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start Game/Area2D" unique_id=1390415540]
+position = Vector2(200, 149.5)
+shape = SubResource("RectangleShape2D_g1vsf")
+
+[node name="Settings" type="Polygon2D" parent="." unique_id=269196328]
+position = Vector2(-96, 322)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(100, 100, 300, 100, 300, 200, 100, 200)
+
+[node name="Label2" type="Label" parent="Settings" unique_id=639859817]
+offset_left = 96.0
+offset_top = 100.0
+offset_right = 305.0
+offset_bottom = 199.0
+theme_override_font_sizes/font_size = 33
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D2" type="Area2D" parent="Settings" unique_id=751295187]
+position = Vector2(0, -126)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Settings/Area2D2" unique_id=1779500754]
+position = Vector2(200, 276)
+shape = SubResource("RectangleShape2D_g1vsf")
+
+[node name="Controls" type="Polygon2D" parent="." unique_id=1350869113]
+position = Vector2(-95, 448)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(100, 100, 300, 100, 300, 200, 100, 200)
+
+[node name="Label3" type="Label" parent="Controls" unique_id=1798784969]
+offset_left = 98.0
+offset_top = 101.0
+offset_right = 300.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 33
+text = "Controls"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D3" type="Area2D" parent="Controls" unique_id=2082513739]
+position = Vector2(-1, -252)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Controls/Area2D3" unique_id=536369598]
+position = Vector2(202, 401)
+shape = SubResource("RectangleShape2D_g1vsf")
+
+[connection signal="mouse_entered" from="Start Game/Area2D" to="." method="_on_start_entered"]
+[connection signal="mouse_exited" from="Start Game/Area2D" to="." method="_on_start_exited"]
+[connection signal="mouse_entered" from="Settings/Area2D2" to="." method="on_settings_entered"]
+[connection signal="mouse_exited" from="Settings/Area2D2" to="." method="_on_settings_exited"]
+[connection signal="mouse_entered" from="Controls/Area2D3" to="." method="on_control_entered"]
+[connection signal="mouse_exited" from="Controls/Area2D3" to="." method="_on_control_exited"]

@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://dk5ir3bhwsmfv"]
+
+[ext_resource type="Script" uid="uid://dpqfq7onlbtk3" path="res://Settings.gd" id="1_bvb5x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fv1l"]
+size = Vector2(300.5, 99)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mx4kw"]
+size = Vector2(304, 100.5)
+
+[node name="Settings" type="Node2D" unique_id=921725779]
+script = ExtResource("1_bvb5x")
+
+[node name="Start Game" type="Polygon2D" parent="." unique_id=1541301843]
+position = Vector2(344, 104)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(100, 100, 400, 100, 400, 200, 100, 200)
+
+[node name="Label" type="Label" parent="Start Game" unique_id=254519516]
+offset_left = 115.0
+offset_top = 98.0
+offset_right = 356.0
+offset_bottom = 197.0
+theme_override_font_sizes/font_size = 25
+text = "Number of NPCs :  5"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="Start Game" unique_id=1155666237]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start Game/Area2D" unique_id=782466514]
+position = Vector2(251, 147)
+shape = SubResource("RectangleShape2D_2fv1l")
+
+[node name="Settings" type="Polygon2D" parent="." unique_id=549408207]
+position = Vector2(342, 228)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(100, 100, 400, 100, 400, 200, 100, 200)
+
+[node name="Label2" type="Label" parent="Settings" unique_id=471554846]
+offset_left = 117.0
+offset_top = 99.0
+offset_right = 377.0
+offset_bottom = 198.0
+theme_override_font_sizes/font_size = 25
+text = "Number of bullets : 3 "
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D2" type="Area2D" parent="Settings" unique_id=582074883]
+position = Vector2(0, -126)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Settings/Area2D2" unique_id=1027218745]
+position = Vector2(250, 275)
+shape = SubResource("RectangleShape2D_2fv1l")
+
+[node name="Back" type="Polygon2D" parent="." unique_id=935195125]
+position = Vector2(342, 348)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(100, 100, 400, 100, 400, 200, 100, 200)
+
+[node name="Label" type="Label" parent="Back" unique_id=345766224]
+offset_left = 149.0
+offset_top = 101.0
+offset_right = 358.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 25
+text = "Go Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="Back" unique_id=1111679571]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Back/Area2D" unique_id=1136325131]
+position = Vector2(251, 150)
+shape = SubResource("RectangleShape2D_mx4kw")
+
+[connection signal="mouse_entered" from="Start Game/Area2D" to="." method="_on_npc_entered"]
+[connection signal="mouse_exited" from="Start Game/Area2D" to="." method="_on_npc_exited"]
+[connection signal="mouse_entered" from="Settings/Area2D2" to="." method="_on_bullets_entered"]
+[connection signal="mouse_exited" from="Settings/Area2D2" to="." method="_on_bullets_exited"]
+[connection signal="mouse_entered" from="Back/Area2D" to="." method="back"]
+[connection signal="mouse_exited" from="Back/Area2D" to="." method="backex"]

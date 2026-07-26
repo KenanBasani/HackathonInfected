@@ -8,7 +8,7 @@ static var bullets_left:int = 0
 var file = FileAccess.open("res://Dialogue.json", FileAccess.READ)
 
 # The dialogue lines pulled from the json
-var Action_lines
+var Reporting_lines
 var Location_lines
 var Infected_mistakes
 var Introduction_lines
@@ -70,11 +70,11 @@ func getInteractionWinner():
 func _unhandled_input(event: InputEvent) -> void:
 	#The action "Interact" itself is tied to the letter E
 	var currentInteraction = getInteractionWinner()
-	if event.is_action_pressed("interact") and currentInteraction:
+	if (event.is_action_pressed("interact") or event.is_action_pressed("Action_question") or event.is_action_pressed("Report_question")) and currentInteraction and DayClock.current_time == "night":
 		var npc = currentInteraction.get_parent()
 		for child in npc.get_children():
 			if child is NPC_base: #If any one of the children nodes is an archetype 
-				var line:String = get_character_line(child,child.times_talked)
+				var line:String = get_character_line(child,child.times_talked,event)
 				var name2 = child.archetype
 				DialogueBox.make_dialogue_box(name2,line)
 				child.times_talked +=1
@@ -85,31 +85,50 @@ func _unhandled_input(event: InputEvent) -> void:
 func read_json_lines()->void:
 	var raw_text=file.get_as_text()
 	var data = JSON.parse_string(raw_text)
-	Action_lines = data["Action_lines"]
+	Reporting_lines = data["Reporting_lines"]
 	Location_lines = data["Location_lines"]
 	Infected_mistakes = data["Infected_mistakes"]
 	Introduction_lines = data["Introduction_lines"]
 	
-func get_character_line(child:NPC_base,times_talked:int)->String:
+func get_character_line(child:NPC_base,times_talked:int,event:InputEvent)->String:
 	var line = ""
-	if times_talked == 0: #If they didnt talk, introduce yourselves
+	if child.times_talked == 0: #If they didnt talk, introduce yourselves
 		line= Introduction_lines.get(child.archetype, "Archetype not matching")
-	if 3>times_talked and times_talked > 0:
-		#Will be added later on as game is developed, for now randomly chooses whether they were somewhere or they did something
-		var action_line= Action_lines.get(child.archetype, "Archetype not matching")
-		var location = "campfire" if randf()>0.5 else "living_room"
-		var location_line= Location_lines.get(location, "Location not matching")
-		line = action_line if randf()>0.5 else location_line
-
-	if times_talked>2:
-		var linearray = (child.completed_tasks)
-		line = ""
-		for i in linearray:
-			line = line + i + "|"
-	if child.infected:
-		line = line + "I am infected"
+		if child.infected and randf()>0.8:
+			line = Infected_mistakes.get(child.archetype,"Archetype not matching")
+		line = line.replace("name",child.charname)
+	if child.times_talked>0 and event.is_action_pressed("Action_question"):
+		var action_done = randi_range(0,2)
+		line = Location_lines.get(child.recorded_places[action_done],"").pick_random() + "," + child.daily_actions[action_done]
+	if child.times_talked>0 and event.is_action_pressed("Report_question"):
+		var action_equal = {}
+		var action_just_missed_by = {}
+		for npc in Manage_NPCs.npc_list:
+			if npc != null:
+				for child_of_npc in npc.get_children():
+					if child_of_npc is NPC_base and child != child_of_npc:
+						for i in range(0,child_of_npc.recorded_places.size()-1):
+							if child.recorded_places[i] == child_of_npc.recorded_places[i]:
+								action_equal[child.recorded_places[i]] = [i,child_of_npc]
+							if i<2 and child_of_npc.recorded_places.size()>2 and child.recorded_places.size()>2:
+								if child.recorded_places[i+1] == child_of_npc.recorded_places[i]:
+									action_just_missed_by[child.recorded_places[i+1]] = [i+1,child_of_npc.recorded_places[i],child_of_npc]
+								if child.recorded_places[i] == child_of_npc.recorded_places[i+1]:
+									action_just_missed_by[child.recorded_places[i]] = [i,child_of_npc.recorded_places[i+1],child_of_npc]
+		var report_action = "with" if action_just_missed_by.is_empty() or randf()>0.5 else "saw"
+		if report_action == "with":
+			var actions_info = action_equal.values().pick_random()
+			line = Reporting_lines.get("with").replace("player1",actions_info[1].charname).replace("action",child.completed_tasks[actions_info[0]])
+		if report_action == "saw":
+			var actions_info = action_just_missed_by.values().pick_random()
+			line = Reporting_lines.get("saw").replace("player1",actions_info[2].charname).replace("place",actions_info[1]).replace("action",child.completed_tasks[actions_info[0]])
+		
+	
+	child.times_talked +=1
 	return line
-
+	
+	
+	
 func check_if_game_ended()->int:
 	var number_of_infected_left:int = 0
 	for npc in Manage_NPCs.npc_list:

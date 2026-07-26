@@ -1,19 +1,18 @@
 extends Node
 class_name DayClock
-@export var day_time = 20.0
-@export var night_time = 10.0
-static var current_time = ""
+@export var day_time = 10.0
+@export var night_time = 5.0
+static var current_time = "day"
 @onready var timer: Timer = $Timer
 var task_timer_timeouts = 0
 var task_timer = Timer.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Player.bullets_left = round((len(Manage_NPCs.npc_list)/4)*3)
 	timer.wait_time = day_time
 	initialize_task_timer()
 	timer.start()
-
+	Player.bullets_left = roundi((Manage_NPCs.npc_list.size() / 4.0) * 3)
 func initialize_task_timer()->void:
 	task_timer.one_shot = true
 	task_timer.timeout.connect(_on_task_timer_timeout)
@@ -28,8 +27,6 @@ func _process(delta: float) -> void:
 	#print("--------------------------E")
 	print($NPC_Manager.npc_list)
 	pass
-
-
 func _on_timer_timeout() -> void:
 	var day_or_night = "The day has begun"
 	
@@ -48,7 +45,6 @@ func _on_timer_timeout() -> void:
 	if current_time == "day":
 		Manage_NPCs.infect_npc()
 	timer.start()
-	print(timer.wait_time)
 	
 func _on_task_timer_timeout()->void:
 	if task_timer_timeouts>2:
