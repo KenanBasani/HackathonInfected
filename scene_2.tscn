@@ -1,16 +1,10 @@
 [gd_scene format=3 uid="uid://clccxgglfy55d"]
 
-[ext_resource type="PackedScene" uid="uid://daqcaodhiwdn1" path="res://player.tscn" id="1_ogt5y"]
 [ext_resource type="Script" uid="uid://dh0lin4o1m2os" path="res://scene_2.gd" id="1_ryt5m"]
 [ext_resource type="Texture2D" uid="uid://bbkr86aq2ooc1" path="res://treeblock.png" id="4_f618r"]
 [ext_resource type="Texture2D" uid="uid://dla2jo03nqlgg" path="res://scene2f.png" id="5_4ia8e"]
-[ext_resource type="Script" uid="uid://cc8nifie7w01y" path="res://tp(scene_2_to_scene_3).gd" id="7_4ia8e"]
 [ext_resource type="Texture2D" uid="uid://cpbk3prufh0j0" path="res://fuckyouthatswhy.png" id="7_ryt5m"]
 [ext_resource type="Texture2D" uid="uid://c8viiqq00vma5" path="res://toscene3.png" id="9_lpdaq"]
-[ext_resource type="Script" uid="uid://rfagbesk0i85" path="res://tp(scene_2toscene_1).gd" id="9_mu6jc"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogt5y"]
-size = Vector2(36.75, 890)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_h6yol"]
 a = Vector2(-138, -397)
@@ -23,24 +17,10 @@ b = Vector2(-188, -132)
 [sub_resource type="CircleShape2D" id="CircleShape2D_h6yol"]
 radius = 80.65358
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hawkm"]
-size = Vector2(53, 525)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h6yol"]
-size = Vector2(349, 39.5)
-
 [node name="Scene2" type="Node2D" unique_id=553733876]
 script = ExtResource("1_ryt5m")
 
-[node name="Player" parent="." unique_id=258083068 instance=ExtResource("1_ogt5y")]
-position = Vector2(123, 335)
-
 [node name="Wall" type="StaticBody2D" parent="." unique_id=1605794316]
-
-[node name="Left wall" type="CollisionShape2D" parent="Wall" unique_id=1709038800]
-position = Vector2(-13, 324)
-shape = SubResource("RectangleShape2D_ogt5y")
-debug_color = Color(0.048890933, 0.58427876, 0.77760345, 0.41960785)
 
 [node name="Scene2f" type="Sprite2D" parent="." unique_id=1004601953]
 z_index = -10
@@ -157,29 +137,17 @@ position = Vector2(532, 142.00012)
 scale = Vector2(10.185, 10.58)
 texture = ExtResource("4_f618r")
 
-[node name="Tp(Scene2->Scene1)" type="Area2D" parent="." unique_id=2123863266]
-script = ExtResource("9_mu6jc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Tp(Scene2->Scene1)" unique_id=1560318510]
-position = Vector2(-5, 212)
-shape = SubResource("RectangleShape2D_hawkm")
-
 [node name="Toscene3" type="Sprite2D" parent="." unique_id=273462424]
 z_index = -11
 position = Vector2(495, -223.00002)
 scale = Vector2(2.6333332, 3.0099998)
 texture = ExtResource("9_lpdaq")
 
-[node name="TP(Scene2toScene3)" type="Area2D" parent="." unique_id=1618026851]
-position = Vector2(-7, 28)
-script = ExtResource("7_4ia8e")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TP(Scene2toScene3)" unique_id=2135937480]
-position = Vector2(450, -209)
-shape = SubResource("RectangleShape2D_h6yol")
-
 [node name="FromScene3" type="Marker2D" parent="." unique_id=72162821]
 position = Vector2(438, -43)
 
-[connection signal="body_entered" from="Tp(Scene2->Scene1)" to="Tp(Scene2->Scene1)" method="_on_body_entered"]
-[connection signal="body_entered" from="TP(Scene2toScene3)" to="TP(Scene2toScene3)" method="_on_body_entered"]
+[node name="Treeblock8" type="Sprite2D" parent="." unique_id=1523909987]
+z_index = -11
+position = Vector2(260.00012, 896)
+scale = Vector2(10.185, 10.58)
+texture = ExtResource("4_f618r")

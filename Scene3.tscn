@@ -2,8 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://c8viiqq00vma5" path="res://toscene3.png" id="1_761ha"]
 [ext_resource type="Texture2D" uid="uid://bbxrxi2xwysaa" path="res://Scene3.png" id="1_h8v41"]
-[ext_resource type="PackedScene" uid="uid://daqcaodhiwdn1" path="res://player.tscn" id="3_h8v41"]
-[ext_resource type="Script" uid="uid://5jvoof3u0ge2" path="res://tp(scene_3_to_scene_2).gd" id="4_y377s"]
 [ext_resource type="Texture2D" uid="uid://bbkr86aq2ooc1" path="res://treeblock.png" id="5_31oqd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h6yol"]
@@ -23,9 +21,6 @@ b = Vector2(-86.47058, 71.08557)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_h6yol"]
 a = Vector2(-103.058815, -148.90398)
 b = Vector2(-84.23529, -148.27768)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hawkm"]
-size = Vector2(1136.5, 162.5)
 
 [node name="Scene_3" type="Node2D" unique_id=978619944]
 
@@ -116,16 +111,6 @@ shape = SubResource("SegmentShape2D_h6yol")
 position = Vector2(155.52939, 0.6263048)
 shape = SubResource("SegmentShape2D_h6yol")
 
-[node name="Player" parent="." unique_id=258083068 instance=ExtResource("3_h8v41")]
-position = Vector2(1332, 859)
-
-[node name="TP(Scene3ToScene2)" type="Area2D" parent="." unique_id=1868193174]
-script = ExtResource("4_y377s")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TP(Scene3ToScene2)" unique_id=1799356035]
-position = Vector2(1322, 1437)
-shape = SubResource("RectangleShape2D_hawkm")
-
 [node name="Treeblock" type="Sprite2D" parent="." unique_id=46088085]
 position = Vector2(-75.49994, 989.50006)
 scale = Vector2(5.464999, 7.515)
@@ -180,18 +165,26 @@ rotation = 0.010758171
 scale = Vector2(5.464999, 7.515)
 texture = ExtResource("5_31oqd")
 
+[node name="Treeblock22" type="Sprite2D" parent="." unique_id=1161431184]
+z_index = -1
+position = Vector2(852, 2479)
+rotation = 0.021008844
+scale = Vector2(19.61534, 20.25304)
+skew = 0.001040101
+texture = ExtResource("5_31oqd")
+
 [node name="Treeblock11" type="Sprite2D" parent="." unique_id=1619890860]
 z_index = -1
-position = Vector2(2290, 2379)
+position = Vector2(1988.0458, 2432.8203)
 rotation = 0.010758171
-scale = Vector2(5.464999, 7.515)
+scale = Vector2(8.478577, 8.078587)
 texture = ExtResource("5_31oqd")
 
 [node name="Treeblock12" type="Sprite2D" parent="." unique_id=2091082121]
 z_index = -1
-position = Vector2(2290, 2379)
+position = Vector2(2279.9084, 2388.091)
 rotation = 0.010758171
-scale = Vector2(5.464999, 7.515)
+scale = Vector2(5.5648212, 7.6169934)
 texture = ExtResource("5_31oqd")
 
 [node name="Treeblock13" type="Sprite2D" parent="." unique_id=1701129338]
@@ -260,5 +253,3 @@ z_index = -1
 position = Vector2(1964, 368.00003)
 scale = Vector2(5.464999, 7.515)
 texture = ExtResource("5_31oqd")
-
-[connection signal="body_entered" from="TP(Scene3ToScene2)" to="TP(Scene3ToScene2)" method="_on_body_entered"]
