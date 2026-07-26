@@ -23,6 +23,7 @@ animations = [{
 size = Vector2(123, 122)
 
 [node name="Player" type="CharacterBody2D" unique_id=258083068]
+z_index = 5
 motion_mode = 1
 script = ExtResource("1_onrkg")
 metadata/_edit_group_ = true

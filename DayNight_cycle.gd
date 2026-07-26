@@ -22,6 +22,10 @@ func initialize_task_timer()->void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#print("--------------------------S")
+	#print(get_tree_string())
+	#print("--------------------------E")
+	print($NPC_Manager.npc_list)
 	pass
 func _on_timer_timeout() -> void:
 	var day_or_night = "The day has begun"

@@ -41,6 +41,7 @@ func tryToKill():
 	var currentInteraction = getInteractionWinner()
 	if (currentInteraction) and bullets_left:
 		bullets_left -=1
+		print("Bullets")
 		currentInteraction.killNPC()
 		#Announce the kill
 		var npc_killed_name = ""

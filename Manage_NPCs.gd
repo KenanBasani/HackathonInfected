@@ -55,7 +55,7 @@ func spawn_n_npcs(count: int) -> void:
 		#adds the npc to the scene
 	on_day_start()
 
-		
+
 
 static func on_day_start()->void:
 	for npc in npc_list:
